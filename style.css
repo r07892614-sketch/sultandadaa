@@ -1,0 +1,169 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at bottom, #000, #0a0a0a, #1a0f00);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Background spark glow */
+.glow-bg::before,
+.glow-bg::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  animation: glowPulse 6s infinite alternate;
+}
+
+/* Card */
+.container {
+  width: 90%;
+  max-width: 430px;
+  text-align: center;
+  z-index: 2;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 28px;
+  padding: 50px 25px;
+  box-shadow: 0 0 60px rgba(255, 190, 0, 0.15);
+  backdrop-filter: blur(20px);
+  animation: slideIn 1.2s ease;
+  position: relative;
+}
+
+/* Flame glow above */
+.flame {
+  width: 80px;
+  height: 80px;
+  background: url("logo.jpg") center/contain no-repeat;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 20px #ffb300);
+}
+
+/* Title */
+h1 {
+  background: linear-gradient(90deg, #ffd700, #ffb700, #ffea70);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-top: 40px;
+  font-weight: 800;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.subs {
+  font-size: 0.9rem;
+  color: #e6c560;
+  margin-top: 6px;
+}
+
+/* Description */
+.desc {
+  margin: 25px 0;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  color: #ffeaa0;
+}
+
+.desc strong {
+  color: #fff08a;
+}
+
+/* Timer */
+.timer-section p {
+  font-size: 0.9rem;
+  color: #d7b74a;
+}
+
+#timer {
+  font-size: 2rem;
+  color: #ffcf40;
+  font-weight: 800;
+  text-shadow: 0 0 12px #ffcc00;
+  margin-top: 5px;
+}
+
+/* Join button */
+#joinBtn {
+  background: linear-gradient(90deg, #ffb300, #ff8800);
+  color: #000;
+  font-weight: 800;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 38px;
+  cursor: pointer;
+  font-size: 1.8rem;
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: glowButton 1.6s infinite alternate;
+}
+
+#joinBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 45px rgba(255, 180, 0, 0.8);
+}
+
+#joinBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80px;
+  width: 50px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skewX(-20deg);
+  animation: shine 3s infinite;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glowButton {
+  from { opacity: 0.9; box-shadow: 0 0 25px rgba(255, 200, 0, 0.5); }
+  to { opacity: 1; box-shadow: 0 0 45px rgba(255, 200, 0, 0.8); }
+}
+
+@keyframes shine {
+  0% { left: -80px; }
+  100% { left: 120%; }
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  .desc { font-size: 0.9rem; }
+  #joinBtn { padding: 10px 26px; font-size: 0.95rem; }
+}
